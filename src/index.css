@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+/* 💡 대기업 금융앱 스타일 프리텐다드 폰트 */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+
+:root {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #F1F5F9; /* PC 배경을 약간 더 차분하게 하여 모바일 폰이 도드라지게 설정 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 슬라이더 터치 영역 확대 (모바일 가독성) */
+input[type="range"] {
+  accent-color: #4F46E5;
+  height: 8px;
+  cursor: pointer;
+}
