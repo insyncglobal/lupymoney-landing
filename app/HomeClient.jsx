@@ -1,15 +1,18 @@
+'use client'; // 📱 Next.js에서 useState, useEffect를 쓰기 위한 필수 선언
+
 import React, { useState, useEffect } from 'react';
-import Calculator from './components/Calculator';
+// 🧱 컴포넌트와 데이터는 기존 경로에 맞게 적절히 이동 배치하셔야 합니다.
+import Calculator from './components/Calculator'; 
 import { FAQS } from './constants/data';
 
-// 🌐 [중요] 여기에 실제 연결하실 주소와 전화번호를 입력하세요!
+// 🌐 [중요] 실제 연결하실 주소와 전화번호 데이터
 const LINK_CONFIG = {
-  kakaoTalk: 'https://open.kakao.com/o/sl5pstvi', // 카카오톡 채널 또는 오픈채팅 주소
-  phoneNumber: 'tel:010-2156-9337',       // 실제 전화번호 (tel: 프로토콜 유지)
-  domainHome: 'https://rupicash.com',    // 연결할 메인 홈페이지 도메인 주소
+  kakaoTalk: 'https://open.kakao.com/o/sl5pstvi',
+  phoneNumber: 'tel:010-2156-9337',
+  domainHome: 'https://rupicash.com',
 };
 
-export default function App() {
+export default function Home() {
   // 📱 실시간 라이브 피드 데이터 관리용 State
   const [feeds, setFeeds] = useState([
     { id: 1, name: '강*기', type: '소액결제', amount: '530000원', time: '방금 전' },
@@ -63,7 +66,6 @@ export default function App() {
       {/* 📱 헤더 */}
       <header className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
         <div className="max-w-6xl mx-auto flex justify-between items-center h-16 px-4 md:px-8">
-          {/* 도메인 연결: 로고 클릭 시 메인 홈으로 이동 */}
           <a 
             href={LINK_CONFIG.domainHome} 
             className="font-black text-xl md:text-2xl text-violet-600 tracking-tight hover:opacity-80 transition-opacity"
@@ -76,7 +78,6 @@ export default function App() {
             <a href="#proof" className="hover:text-violet-600">진행후기</a>
             <a href="#faq" className="hover:text-violet-600">자주묻는질문</a>
           </nav>
-          {/* 카카오톡 연결: 헤더 우측 바로연결 버튼 */}
           <a 
             href={LINK_CONFIG.kakaoTalk}
             target="_blank"
@@ -127,9 +128,7 @@ export default function App() {
                 ))}
               </ul>
 
-              {/* 메인 비주얼 내 실시간 상담 연동 링크 스팟 */}
               <div className="grid grid-cols-2 gap-4 max-w-md mx-auto lg:mx-0 pt-2">
-                {/* 메인 카카오톡 채팅상담 */}
                 <a
                   href={LINK_CONFIG.kakaoTalk}
                   target="_blank"
@@ -138,7 +137,6 @@ export default function App() {
                 >
                   💬 채팅상담 바로가기
                 </a>
-                {/* 메인 전화상담 걸기 */}
                 <a
                   href={LINK_CONFIG.phoneNumber}
                   className="bg-slate-900 text-white font-black py-4 px-4 rounded-xl text-center text-sm md:text-base shadow-lg border border-slate-800 hover:bg-slate-800 transition-all transform hover:-translate-y-0.5"
@@ -210,14 +208,7 @@ export default function App() {
             </p>
           </div>
 
-          <div className="max-w-md mx-auto bg-slate-950 p-2 sm:p-3 rounded-[2.5rem] shadow-2xl border-4 border-slate-800 relative overflow-hidden">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-4 bg-slate-800 rounded-b-xl z-10 hidden sm:block" />
-            <img
-              src="/images/proof.jpg"
-              alt="실제 은행 입금 완료 및 카카오톡 상담 캡처 증빙"
-              className="rounded-[2rem] w-full object-cover shadow-inner bg-white min-h-[400px]"
-            />
-          </div>
+
 
           {/* 🔥 라이브 피드 */}
           <div className="max-w-2xl mx-auto bg-white border-2 border-slate-200 rounded-3xl p-6 md:p-8 shadow-md space-y-4 text-left">
@@ -232,30 +223,21 @@ export default function App() {
             <div className="divide-y divide-slate-100 font-black text-slate-700">
               {feeds.map((feed) => (
                 <div key={feed.id} className="py-5 flex flex-row justify-between items-center px-2 transition-all duration-300">
-                  
-                  {/* 왼쪽 칸: 고객명 및 타입 정보 */}
                   <div className="flex-grow text-slate-900 text-base md:text-lg font-black tracking-tight truncate pr-2">
                     {feed.name} 고객님 <span className="text-xs md:text-sm text-slate-400 font-bold ml-1.5">({feed.type})</span>
                   </div>
                   
-                  {/* 오른쪽 칸: 우측 고정 영역 확보 */}
                   <div className="flex items-center justify-end gap-5 min-w-[220px] sm:min-w-[270px] shrink-0">
-                    
-                    {/* 금액 노출 */}
                     <span className="text-rose-600 text-xl md:text-2xl font-black tracking-tight text-right flex-grow pr-1">
                       {feed.amount}
                     </span>
-                    
-                    {/* 입금 완료 박스 */}
                     <span className="text-emerald-600 bg-emerald-50 text-xs md:text-sm px-3.5 py-1.5 rounded-xl font-black text-center leading-tight min-w-[95px] sm:min-w-[105px] shrink-0 block">
                       입금완료
                       <span className="block text-[10px] md:text-xs font-bold text-emerald-500/90 mt-0.5">
                         ({feed.time})
                       </span>
                     </span>
-
                   </div>
-
                 </div>
               ))}
             </div>
@@ -286,7 +268,7 @@ export default function App() {
           </div>
         </section>
 
-        {/* 🚀 하단 대형 카카오톡 플로팅 배너 CTA */}
+        {/* 🚀 하단 배너 */}
         <section className="max-w-5xl mx-auto px-4 md:px-8 pb-16">
           <a
             href={LINK_CONFIG.kakaoTalk}
@@ -305,11 +287,9 @@ export default function App() {
         <div className="max-w-5xl mx-auto space-y-4">
           <p className="font-bold text-slate-800 text-center">[이용자 권익 보호 조항]</p>
           <p className="font-semibold text-center">서비스명: 루피머니 정산 가이드 센터 | 24시간 정상 운영</p>
-          
           <p className="leading-relaxed text-slate-400 text-justify md:text-center pt-2">
             본 서비스는 이용자의 자산 확인 및 정산 가이드 절차를 돕는 안내 채널입니다. 불법 금융 유도 및 명의 도용 거래는 필터링 시스템에 의해 차단 및 관계기관에 즉시 통보됩니다.
           </p>
-          {/* 도메인 연결: 카피라이트 영역 클릭 시 메인 홈 연결 */}
           <p className="text-slate-300 border-t pt-4 text-center">
             © <a href={LINK_CONFIG.domainHome} className="hover:underline">{new URL(LINK_CONFIG.domainHome).hostname}</a>. All rights reserved.
           </p>

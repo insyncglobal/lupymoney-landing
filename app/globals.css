@@ -1,0 +1,7 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+
+@import "tailwindcss"; /* 🎯 최신 Tailwind v4는 이 한 줄로 모든 세팅이 끝납니다! */
+
+:root {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+}
