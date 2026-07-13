@@ -1,6 +1,6 @@
 export const RATES = {
   phone: { name: '소액결제', rate: 0.85, max: 1000000 },
-  content: { name: '정보이용료', rate: 0.75, max: 1000000 },
+  content: { name: '정보이용료', rate: 0.70, max: 1000000 },
   card: { name: '신용카드', rate: 0.90, max: 5000000 }
 };
 
